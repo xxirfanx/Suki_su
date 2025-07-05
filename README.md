@@ -1,4 +1,4 @@
-# Wild Kernels for Android
+# VenGeance+ Kernel for Redmi 12 5G (sky)
 
 ## Your warranty is no longer valid!
 
@@ -14,36 +14,9 @@ By flashing this kernel, **YOU** are choosing to make these modifications. If so
 
 ---
 
-# Kernels:
- 
-[GKI](https://github.com/WildKernels/GKI_KernelSU_SUSFS)  
-[Sultan](https://github.com/WildKernels/Sultan_KernelSU_SUSFS)  
-[OnePlus](https://github.com/WildKernels/OnePlus_KernelSU_SUSFS)  
-[Legacy Pixels](https://github.com/WildKernels/Pixel_KernelSU_SUSFS)  
-
----
-
-# Other Links:
-
-[Kernel Patches](https://github.com/WildKernels/kernel_patches)  
-[Old Build Scripts](https://github.com/TheWildJames/kernel_build_scripts)  
-[Horizon Kernel Flasher](https://github.com/libxzr/HorizonKernelFlasher)  
-
----
-
-# Installation instructions: 
-
-Follow the steps for GKI:  
-[Installation](https://kernelsu.org/guide/installation.html)
-
-To get boot.img format:  
-[Get My Kernel Format](https://github.com/TheWildJames/Get_My_Kernel_Format)
-
----
-
 # Features
 
-- **KernelSU**: KernelSU is a root solution for Android GKI devices, it works in kernel mode and grants root permission to userspace applications directly in kernel space.
+- **KernelSU Next**: KernelSU Next is a advanced root solution for Android GKI devices, it works in kernel mode and grants root permission to userspace applications directly in kernel space.
 - **SUSFS**: An addon root hiding kernel patches and userspace module for KernelSU.
 
 ---
@@ -73,20 +46,13 @@ Flashing this kernel will void your warranty, and there is always a risk of bric
 
 **Proceed at your own risk!**
 
----
 
-# To-DO
-
-- [X] Get Stoned & Build kernels!
-
----
-
-[Telegram](https://t.me/TheWildJames)  
-[Telegram Group](https://t.me/WildKernels)  
+[Telegram](https://t.me/VenGeance_Kernels)  
 
 # Special thanks to the following people for their contributions!
 This helps me alot! <3
 
+[TheWildJames](https://t.me/TheWildJames) - Created & Maintaing Patches!
 [simonpunk](https://gitlab.com/simonpunk/susfs4ksu.git) - Created SUSFS!  
 [sidex15](https://github.com/sidex15) - Created module!  
 [backslashxx](https://github.com/backslashxx) - Helped with patches!  
