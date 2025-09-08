@@ -1,4 +1,4 @@
-# VenGeance+ Kernel for Redmi 12 5G (sky)
+# XposedHook+ Kernel for Redmi 12 5G (sky)
 
 ## Your warranty is no longer valid!
 
