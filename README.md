@@ -52,6 +52,7 @@ Flashing this kernel will void your warranty, and there is always a risk of bric
 # Special thanks to the following people for their contributions!
 This helps me alot! <3
 
+[fork original](https://github.com/xiaomi-sm4450-sky/GKI_KSUN_SUSFS/tree/sky-ksun-gki) - for sky ksun gki
 [TheWildJames](https://t.me/TheWildJames) - Created & Maintaing Patches!
 [simonpunk](https://gitlab.com/simonpunk/susfs4ksu.git) - Created SUSFS!  
 [sidex15](https://github.com/sidex15) - Created module!  
