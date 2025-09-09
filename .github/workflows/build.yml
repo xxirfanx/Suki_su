@@ -1,7 +1,7 @@
 name: Build Script
 permissions:
   contents: write
-  actions: write 
+  actions: write
 
 on:
   workflow_call:
@@ -77,7 +77,7 @@ jobs:
       - name: Clone AnyKernel3 and Other Dependencies
         run: |
           echo "Cloning AnyKernel3 and other dependencies..."
-          git clone https://github.com/askthekaif/AnyKernel3.git -b gki-2.0
+          git clone https://github.com/xxirfanx/AnyKernel3.git -b gki-2.0
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android12-5.10
           git clone https://github.com/WildPlusKernel/kernel_patches.git
 
