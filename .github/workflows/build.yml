@@ -225,8 +225,7 @@ jobs:
           if [ "${{ inputs.kernelsu_variant }}" == "SukiSU" ]; then
             echo "Applying SUSFS patches for SukiSU..."
              cd KernelSU
-            
-            
+
             echo "Applying SukiSU specific SUSFS patch..."
           else
             echo "Invalid KernelSU variant selected!"
@@ -298,13 +297,13 @@ jobs:
           echo "CONFIG_IP6_NF_MATCH_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Add BBR Config
-          echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 
+          echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_NET_SCH_FQ=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_TCP_CONG_BIC=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_TCP_CONG_WESTWOOD=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_HTCP=n" >> ./common/arch/arm64/configs/gki_defconfig 
-          echo "CONFIG_DEFAULT_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig 
+          echo "CONFIG_TCP_CONG_HTCP=n" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_DEFAULT_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Add optimized 
           echo "CONFIG_BPF_STREAM_PARSER=y" >> ./common/arch/arm64/configs/gki_defconfig
@@ -338,7 +337,7 @@ jobs:
       - name: Change Kernel Name
         run: |
           cd "$CONFIG"
-          
+
           sed -i '$s|echo "\$res"|echo "-XposedHook+"|' ./common/scripts/setlocalversion
           if [ -f "build/build.sh" ]; then
             sed -i 's/-dirty//' ./common/scripts/setlocalversion
@@ -445,14 +444,14 @@ jobs:
           mv ../Image ./Image
           zip -r "../$ZIP_NAME" ./*
           rm ./Image
-          
+
       - name: Upload to Telegram
         run: |
           echo "Uploading zip & Image to Telegram..."
           pip3 install git+https://github.com/kaif-00z/UploadGramX.git
           uploadgram ${{ secrets.CHAT_ID }} "$ZIP_FILENAME" --token ${{ secrets.BOT_TOKEN }} --fd True
           uploadgram ${{ secrets.CHAT_ID }} "Image" --token ${{ secrets.BOT_TOKEN }} --fd True
-          
+
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
