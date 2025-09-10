@@ -416,12 +416,12 @@ jobs:
           zip -r "../$ZIP_NAME" ./*
           rm ./Image
 
-      - name: Upload to Telegram
-        run: |
-          echo "Uploading zip & Image to Telegram..."
-          pip3 install git+https://github.com/kaif-00z/UploadGramX.git
-          uploadgram ${{ secrets.CHAT_ID }} "$ZIP_FILENAME" --token ${{ secrets.BOT_TOKEN }} --fd True
-          uploadgram ${{ secrets.CHAT_ID }} "Image" --token ${{ secrets.BOT_TOKEN }} --fd True
+      # - name: Upload to Telegram
+      #  run: |
+      #    echo "Uploading zip & Image to Telegram..."
+      #    pip3 install git+https://github.com/kaif-00z/UploadGramX.git
+      #    uploadgram ${{ secrets.CHAT_ID }} "$ZIP_FILENAME" --token ${{ secrets.BOT_TOKEN }} --fd True
+      #    uploadgram ${{ secrets.CHAT_ID }} "Image" --token ${{ secrets.BOT_TOKEN }} --fd True
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
