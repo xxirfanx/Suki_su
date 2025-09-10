@@ -65,7 +65,7 @@ jobs:
           ccache --max-size=2G
           ccache --set-config=compression=true
           echo "CCACHE_DIR=$HOME/.ccache" >> $GITHUB_ENV
-          
+
       - name: Install Repo
         run: |
           mkdir -p ./git-repo
@@ -80,6 +80,7 @@ jobs:
           git clone https://github.com/xxirfanx/AnyKernel3.git -b gki-2.0
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android12-5.10
           git clone https://github.com/WildPlusKernel/kernel_patches.git
+          git clone https://github.com/ShirkNeko/SukiSU_patch.git
 
       - name: Initialize and Sync Kernel Source
         run: |
