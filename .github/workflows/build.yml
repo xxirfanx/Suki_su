@@ -333,6 +333,7 @@ jobs:
           # add CPU scheduling clamps
           echo "CONFIG_UCLAMP_TASK=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_UCLAMP_TASK_GROUP=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_CGROUP_SCHED=y" >> ./common/arch/arm64/configs/gki_defconfig
           
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
