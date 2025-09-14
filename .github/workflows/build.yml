@@ -342,18 +342,38 @@ jobs:
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
 
-      - name: Change Kernel Name
+      - name: Configure kernel version and build info
         run: |
           cd "$CONFIG"
-
-          sed -i '$s|echo "\$res"|echo "-XposedHook+"|' ./common/scripts/setlocalversion
-          if [ -f "build/build.sh" ]; then
-            sed -i 's/-dirty//' ./common/scripts/setlocalversion
+          
+          # Set custom kernel version
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "Setting custom version: ${{ inputs.version }}"
+            sed -i '$s|echo "\$res"|echo "${{ inputs.version }}"|' ./common/scripts/setlocalversion
           else
+            echo "Using default SukiSU version"
+            sed -i '$s|echo "\$res"|echo "\$res-XposedHook-$(date +%Y%m%d)"|' ./common/scripts/setlocalversion
+          fi
+          
+          # Set build timestamp
+          CURRENT_TIME=$(date -u +"$(date +"Fri Sep 12 10:44:52 UTC 2025")")
+          echo "CURRENT_TIME=$CURRENT_TIME"
+          perl -pi -e "s{UTS_VERSION=\"\\\$\(echo \\\$UTS_VERSION \\\$CONFIG_FLAGS \\\$TIMESTAMP \\| cut -b -\\\$UTS_LEN\)\"}{UTS_VERSION=\"#1 SMP PREEMPT $CURRENT_TIME\"}" ./common/scripts/mkcompile_h
+          
+          # Handle version-specific configurations
+          if [ "${{ inputs.kernel_version }}" = "6.1" ] || [ "${{ inputs.kernel_version }}" = "6.6" ]; then
+            sed -i -e "s|\$(preempt-flag-y) \"\$(build-timestamp)\"|\$(preempt-flag-y) \"$CURRENT_TIME\"|" ./common/init/Makefile
+          fi
+          
+          # Configure for non-Bazel build if using build.sh
+          if [ ! -f "build/build.sh" ]; then
             sed -i '/^[[:space:]]*"protected_exports_list"[[:space:]]*:[[:space:]]*"android\/abi_gki_protected_exports_aarch64",$/d' ./common/BUILD.bazel
             rm -rf ./common/android/abi_gki_protected_exports_*
             sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
-            sed -E -i '/^CONFIG_LOCALVERSION=/ s/(.*)"$/\1-XposedHook+"/' ./common/arch/arm64/configs/gki_defconfig
+            
+            if [ -n "${{ inputs.version }}" ]; then
+              sed -i '/^CONFIG_LOCALVERSION=/ s/="\([^"]*\)"/="${{ inputs.version }}"/' ./common/arch/arm64/configs/gki_defconfig
+            fi
           fi
 
       - name: Build with retry
