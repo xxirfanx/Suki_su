@@ -338,20 +338,6 @@ jobs:
           echo "CONFIG_UCLAMP_TASK=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_UCLAMP_TASK_GROUP=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_CGROUP_SCHED=y" >> ./common/arch/arm64/configs/gki_defconfig
-
-          # ===== BATTERY OPTIMIZATIONS =====
-          # add Power management
-          echo "CONFIG_CPU_IDLE=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_CPU_IDLE_GOV_LADDER=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_CPU_IDLE_GOV_MENU=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_CPU_IDLE_GOV_TEO=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_PM_AUTOSLEEP=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_PM_WAKELOCKS=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_PM_WAKELOCKS_LIMIT=200" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_PM_WAKELOCKS_GC=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_WQ_POWER_EFFICIENT_DEFAULT=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_ENERGY_MODEL=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_CPU_FREQ_STAT=y" >> ./common/arch/arm64/configs/gki_defconfig
           
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
